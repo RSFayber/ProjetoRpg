@@ -1,0 +1,98 @@
+[
+  {
+    "id": "barbarian",
+    "name": "Barbaro",
+    "hitDice": 12,
+    "savingThrows": ["strength", "constitution"],
+    "proficiencies": ["light_armor", "medium_armor", "shields", "simple_weapons", "martial_weapons"],
+    "startingEquipment": ["Machado grande ou qualquer arma marcial corpo a corpo", "Duas machadinhas ou qualquer arma simples", "Pacote do explorador", "Quatro azagaias"]
+  },
+  {
+    "id": "bard",
+    "name": "Bardo",
+    "hitDice": 8,
+    "savingThrows": ["dexterity", "charisma"],
+    "proficiencies": ["light_armor", "simple_weapons", "hand_crossbow", "longsword", "rapier", "shortsword"],
+    "startingEquipment": ["Rapieira ou espada longa ou arma simples corpo a corpo", "Pacote de diplomata ou artista", "Alaide ou instrumento musical", "Armadura de couro", "Adaga"]
+  },
+  {
+    "id": "cleric",
+    "name": "Clerigo",
+    "hitDice": 8,
+    "savingThrows": ["wisdom", "charisma"],
+    "proficiencies": ["light_armor", "medium_armor", "shields", "simple_weapons"],
+    "startingEquipment": ["Maça ou martelo de guerra (se proficiente)", "Brunea ou armadura de couro ou cota de malha (se proficiente)", "Besta leve e 20 virotes ou arma simples", "Pacote do sacerdote ou explorador", "Escudo", "Simbolo sagrado"]
+  },
+  {
+    "id": "druid",
+    "name": "Druida",
+    "hitDice": 8,
+    "savingThrows": ["intelligence", "wisdom"],
+    "proficiencies": ["light_armor", "medium_armor", "shields", "club", "dagger", "dart", "javelin", "mace", "quarterstaff", "scimitar", "sickle", "sling", "spear"],
+    "startingEquipment": ["Escudo de madeira ou arma simples corpo a corpo", "Cimitarra ou arma simples corpo a corpo", "Armadura de couro, escudo de madeira ou armadura de couro batido", "Pacote do explorador", "Foco druidico"]
+  },
+  {
+    "id": "fighter",
+    "name": "Guerreiro",
+    "hitDice": 10,
+    "savingThrows": ["strength", "constitution"],
+    "proficiencies": ["all_armor", "shields", "simple_weapons", "martial_weapons"],
+    "startingEquipment": ["Cota de malha ou armadura de couro ou brunea", "Arma marcial e escudo ou duas armas marciais", "Besta leve e 20 virotes ou duas azagaias", "Pacote de explorador ou atirador"]
+  },
+  {
+    "id": "monk",
+    "name": "Monge",
+    "hitDice": 8,
+    "savingThrows": ["strength", "dexterity"],
+    "proficiencies": ["simple_weapons", "shortsword"],
+    "startingEquipment": ["Espada curta ou arma simples corpo a corpo", "Pacote do explorador ou aventureiro", "10 dardos"]
+  },
+  {
+    "id": "paladin",
+    "name": "Paladino",
+    "hitDice": 10,
+    "savingThrows": ["wisdom", "charisma"],
+    "proficiencies": ["all_armor", "shields", "simple_weapons", "martial_weapons"],
+    "startingEquipment": ["Arma marcial e escudo", "Cinco azagaias", "Pacote do sacerdote ou explorador", "Cota de malha", "Simbolo sagrado"]
+  },
+  {
+    "id": "ranger",
+    "name": "Patrulheiro",
+    "hitDice": 10,
+    "savingThrows": ["strength", "dexterity"],
+    "proficiencies": ["light_armor", "medium_armor", "shields", "simple_weapons", "martial_weapons"],
+    "startingEquipment": ["Armadura de couro batido", "Duas espadas curtas ou duas armas simples corpo a corpo", "Pacote do explorador", "Arco longo e aljava com 20 flechas"]
+  },
+  {
+    "id": "rogue",
+    "name": "Ladino",
+    "hitDice": 8,
+    "savingThrows": ["dexterity", "intelligence"],
+    "proficiencies": ["light_armor", "simple_weapons", "hand_crossbow", "longsword", "rapier", "shortsword", "thieves_tools"],
+    "startingEquipment": ["Rapieira ou espada curta", "Arco curto e aljava com 20 flechas ou espada curta", "Pacote de ladrão ou explorador ou atirador", "Armadura de couro", "Duas adagas", "Ferramentas de ladrao"]
+  },
+  {
+    "id": "sorcerer",
+    "name": "Feiticeiro",
+    "hitDice": 6,
+    "savingThrows": ["constitution", "charisma"],
+    "proficiencies": ["dagger", "dart", "sling", "quarterstaff", "light_crossbow"],
+    "startingEquipment": ["Besta leve e 20 virotes ou arma simples", "Bolsa de componentes ou foco arcano", "Pacote de aventureiro ou explorador", "Duas adagas"]
+  },
+  {
+    "id": "warlock",
+    "name": "Bruxo",
+    "hitDice": 8,
+    "savingThrows": ["wisdom", "charisma"],
+    "proficiencies": ["light_armor", "simple_weapons"],
+    "startingEquipment": ["Besta leve e 20 virotes ou arma simples", "Bolsa de componentes ou foco arcano", "Pacote de estudioso ou diplomata", "Armadura de couro, adaga e duas adagas"]
+  },
+  {
+    "id": "wizard",
+    "name": "Mago",
+    "hitDice": 6,
+    "savingThrows": ["intelligence", "wisdom"],
+    "proficiencies": ["dagger", "dart", "sling", "quarterstaff", "light_crossbow"],
+    "startingEquipment": ["Bordao ou adaga", "Bolsa de componentes ou foco arcano", "Pacote de estudioso", "Grimorio"]
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "fire_bolt",
+    "name": "Raio de Fogo",
+    "level": 0,
+    "school": "evocacao",
+    "classes": ["wizard"]
+  },
+  {
+    "id": "magic_missile",
+    "name": "Missil Magico",
+    "level": 1,
+    "school": "evocacao",
+    "classes": ["wizard"]
+  },
+  {
+    "id": "shield",
+    "name": "Escudo",
+    "level": 1,
+    "school": "abjuracao",
+    "classes": ["wizard"]
+  },
+  {
+    "id": "cure_wounds",
+    "name": "Curar Ferimentos",
+    "level": 1,
+    "school": "evocacao",
+    "classes": ["cleric"]
+  },
+  {
+    "id": "bless",
+    "name": "Bencao",
+    "level": 1,
+    "school": "encantamento",
+    "classes": ["cleric"]
+  }
+]

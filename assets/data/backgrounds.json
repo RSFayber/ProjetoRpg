@@ -1,0 +1,74 @@
+[
+  {
+    "id": "acolyte",
+    "name": "Acólito",
+    "skillProficiencies": ["insight", "religion"],
+    "startingEquipment": ["Simbolo sagrado", "Livro de oracoes", "Incenso (5 varetas)", "Roupas comuns", "15 po"]
+  },
+  {
+    "id": "charlatan",
+    "name": "Charlatão",
+    "skillProficiencies": ["deception", "sleight_of_hand"],
+    "startingEquipment": ["Roupas finas", "Kit de disfarce", "Ferramentas de enganacao", "15 po"]
+  },
+  {
+    "id": "criminal",
+    "name": "Criminoso",
+    "skillProficiencies": ["deception", "stealth"],
+    "startingEquipment": ["Pe de cabra", "Roupas escuras com capuz", "15 po"]
+  },
+  {
+    "id": "entertainer",
+    "name": "Artista",
+    "skillProficiencies": ["acrobatics", "performance"],
+    "startingEquipment": ["Instrumento musical", "Presente de admirador", "Traje de artista", "15 po"]
+  },
+  {
+    "id": "folk_hero",
+    "name": "Herói do Povo",
+    "skillProficiencies": ["animal_handling", "survival"],
+    "startingEquipment": ["Pá", "Panela de ferro", "Roupas comuns", "10 po"]
+  },
+  {
+    "id": "guild_artisan",
+    "name": "Artesão de Guilda",
+    "skillProficiencies": ["insight", "persuasion"],
+    "startingEquipment": ["Ferramentas de artesao", "Carta de apresentacao da guilda", "Roupas de viagem", "15 po"]
+  },
+  {
+    "id": "hermit",
+    "name": "Eremita",
+    "skillProficiencies": ["medicine", "religion"],
+    "startingEquipment": ["Porta pergaminho cheio de notas", "Cobertor de inverno", "Kit de herbalismo", "Roupas comuns", "5 po"]
+  },
+  {
+    "id": "noble",
+    "name": "Nobre",
+    "skillProficiencies": ["history", "persuasion"],
+    "startingEquipment": ["Roupas finas", "Anel de sinete", "Pergaminho de linhagem", "25 po"]
+  },
+  {
+    "id": "outlander",
+    "name": "Forasteiro",
+    "skillProficiencies": ["athletics", "survival"],
+    "startingEquipment": ["Bastao", "Armadilha de caca", "Trofeu de animal", "Roupas de viajante", "10 po"]
+  },
+  {
+    "id": "sage",
+    "name": "Sábio",
+    "skillProficiencies": ["arcana", "history"],
+    "startingEquipment": ["Tinta (1 onca)", "Pena", "Faca pequena", "Carta de colega erudito", "Roupas comuns", "10 po"]
+  },
+  {
+    "id": "soldier",
+    "name": "Soldado",
+    "skillProficiencies": ["athletics", "intimidation"],
+    "startingEquipment": ["Insignia de patente", "Trofeu de inimigo", "Conjunto de dados ou baralho", "Roupas comuns", "10 po"]
+  },
+  {
+    "id": "urchin",
+    "name": "Órfão",
+    "skillProficiencies": ["sleight_of_hand", "stealth"],
+    "startingEquipment": ["Pequena faca", "Mapa da cidade", "Rato de estimacao", "Simbolo dos pais", "Roupas comuns", "10 po"]
+  }
+]

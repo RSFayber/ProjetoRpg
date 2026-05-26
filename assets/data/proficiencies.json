@@ -1,0 +1,47 @@
+[
+  {
+    "id": "arcana",
+    "name": "Arcanismo",
+    "type": "skill"
+  },
+  {
+    "id": "history",
+    "name": "Historia",
+    "type": "skill"
+  },
+  {
+    "id": "insight",
+    "name": "Intuicao",
+    "type": "skill"
+  },
+  {
+    "id": "religion",
+    "name": "Religiao",
+    "type": "skill"
+  },
+  {
+    "id": "athletics",
+    "name": "Atletismo",
+    "type": "skill"
+  },
+  {
+    "id": "intimidation",
+    "name": "Intimidacao",
+    "type": "skill"
+  },
+  {
+    "id": "deception",
+    "name": "Enganacao",
+    "type": "skill"
+  },
+  {
+    "id": "stealth",
+    "name": "Furtividade",
+    "type": "skill"
+  },
+  {
+    "id": "perception",
+    "name": "Percepcao",
+    "type": "skill"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "dagger",
+    "name": "Adaga",
+    "type": "arma",
+    "weight": 1
+  },
+  {
+    "id": "longsword",
+    "name": "Espada longa",
+    "type": "arma",
+    "weight": 3
+  },
+  {
+    "id": "leather_armor",
+    "name": "Armadura de couro",
+    "type": "armadura",
+    "armorClass": 11
+  },
+  {
+    "id": "backpack",
+    "name": "Mochila",
+    "type": "equipamento",
+    "weight": 5
+  }
+]
