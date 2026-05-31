@@ -73,6 +73,8 @@ class CharacterSheetDetails {
     this.spellNotes = '',
     this.skillProficiencyOverrides = const {},
     this.savingThrowOverrides = const {},
+    this.equipmentChoiceSelections = const {},
+    this.selectedBackgroundItems = const [],
   });
 
   final String playerName;
@@ -104,6 +106,8 @@ class CharacterSheetDetails {
   final String spellNotes;
   final Map<String, bool> skillProficiencyOverrides;
   final Map<String, bool> savingThrowOverrides;
+  final Map<String, String> equipmentChoiceSelections;
+  final List<String> selectedBackgroundItems;
 
   Map<String, dynamic> toJson() => {
     'playerName': playerName,
@@ -135,6 +139,8 @@ class CharacterSheetDetails {
     'spellNotes': spellNotes,
     'skillProficiencyOverrides': skillProficiencyOverrides,
     'savingThrowOverrides': savingThrowOverrides,
+    'equipmentChoiceSelections': equipmentChoiceSelections,
+    'selectedBackgroundItems': selectedBackgroundItems,
   };
 
   factory CharacterSheetDetails.fromJson(Map<String, dynamic>? json) {
@@ -185,6 +191,12 @@ class CharacterSheetDetails {
       savingThrowOverrides: Map<String, bool>.from(
         json['savingThrowOverrides'] as Map? ?? const {},
       ),
+      equipmentChoiceSelections: Map<String, String>.from(
+        json['equipmentChoiceSelections'] as Map? ?? const {},
+      ),
+      selectedBackgroundItems: List<String>.from(
+        json['selectedBackgroundItems'] as List? ?? const [],
+      ),
     );
   }
 
@@ -218,6 +230,8 @@ class CharacterSheetDetails {
     String? spellNotes,
     Map<String, bool>? skillProficiencyOverrides,
     Map<String, bool>? savingThrowOverrides,
+    Map<String, String>? equipmentChoiceSelections,
+    List<String>? selectedBackgroundItems,
   }) {
     return CharacterSheetDetails(
       playerName: playerName ?? this.playerName,
@@ -257,6 +271,10 @@ class CharacterSheetDetails {
           skillProficiencyOverrides ?? this.skillProficiencyOverrides,
       savingThrowOverrides:
           savingThrowOverrides ?? this.savingThrowOverrides,
+      equipmentChoiceSelections:
+          equipmentChoiceSelections ?? this.equipmentChoiceSelections,
+      selectedBackgroundItems:
+          selectedBackgroundItems ?? this.selectedBackgroundItems,
     );
   }
 }

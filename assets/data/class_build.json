@@ -1,0 +1,517 @@
+{
+  "barbarian": {
+    "attributeTips": {
+      "summary": "O barbaro depende de Forca para ataques corpo a corpo e de Constituicao para pontos de vida, resistencia na Furia e testes de resistencia.",
+      "primary": ["strength", "constitution"],
+      "secondary": []
+    },
+    "equipmentChoices": [
+      {
+        "id": "barbarian_primary_weapon",
+        "prompt": "Arma marcial corpo a corpo (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Machado grande", "items": ["Machado grande"]},
+          {"id": "b", "label": "Qualquer arma marcial corpo a corpo", "items": ["Uma arma marcial corpo a corpo a escolha"]}
+        ]
+      },
+      {
+        "id": "barbarian_secondary_weapon",
+        "prompt": "Arma secundaria (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Duas machadinhas", "items": ["Machadinha", "Machadinha"]},
+          {"id": "b", "label": "Qualquer arma simples", "items": ["Uma arma simples a escolha"]}
+        ]
+      },
+      {
+        "id": "barbarian_pack",
+        "prompt": "Pacote de equipamento",
+        "options": [
+          {"id": "a", "label": "Pacote do explorador", "items": ["Pacote do explorador"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Quatro azagaias"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque corpo a corpo ou a distancia com arma. Modificador de ataque: Forca (corpo a corpo) ou Destreza (a distancia). Dano: dado da arma + mesmo modificador."},
+      {"level": 1, "name": "Furia", "type": "feature", "description": "Como acao bonus, entra em Furia por 1 minuto (se nao estiver usando armadura pesada). Vantagem em testes de Forca, bonus de dano corpo a corpo com Forca, resistencia a dano de concussao, perfuracao e cortante. Usos por descanso longo conforme nivel."},
+      {"level": 1, "name": "Defesa sem armadura", "type": "feature", "description": "CA = 10 + modificador de Destreza + modificador de Constituicao quando nao usa armadura."},
+      {"level": 2, "name": "Ataque imprudente", "type": "feature", "description": "No primeiro ataque do turno pode atacar com vantagem usando Forca, mas ataques contra voce tem vantagem ate o proximo turno."},
+      {"level": 2, "name": "Sentido de perigo", "type": "feature", "description": "Vantagem em testes de resistencia de Destreza contra efeitos que voce ve, como armadilhas e magias."},
+      {"level": 3, "name": "Caminho primitivo", "type": "feature", "description": "Escolhe um caminho primitivo que concede caracteristicas nos niveis 3, 6, 10 e 14."},
+      {"level": 5, "name": "Ataque extra", "type": "feature", "description": "Pode atacar duas vezes quando usa a acao Atacar."},
+      {"level": 5, "name": "Movimento rapido", "type": "feature", "description": "Velocidade aumenta em 3 m quando nao usa armadura pesada."}
+    ]
+  },
+  "bard": {
+    "attributeTips": {
+      "summary": "O bardo usa Carisma para magias, Inspiracao Bardica e interacao social. Destreza ajuda na CA e em ataques a distancia.",
+      "primary": ["charisma"],
+      "secondary": ["dexterity"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "bard_weapon",
+        "prompt": "Arma corpo a corpo (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Rapieira", "items": ["Rapieira"]},
+          {"id": "b", "label": "Espada longa", "items": ["Espada longa"]},
+          {"id": "c", "label": "Qualquer arma simples corpo a corpo", "items": ["Uma arma simples corpo a corpo a escolha"]}
+        ]
+      },
+      {
+        "id": "bard_pack",
+        "prompt": "Pacote (escolha um)",
+        "options": [
+          {"id": "a", "label": "Pacote de diplomata", "items": ["Pacote de diplomata"]},
+          {"id": "b", "label": "Pacote de artista", "items": ["Pacote de artista"]}
+        ]
+      },
+      {
+        "id": "bard_instrument",
+        "prompt": "Instrumento musical (escolha um)",
+        "options": [
+          {"id": "a", "label": "Alaide", "items": ["Alaide"]},
+          {"id": "b", "label": "Outro instrumento musical", "items": ["Um instrumento musical a escolha"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Armadura de couro", "Adaga"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque com arma. Corpo a corpo: Forca ou Destreza (finesse). A distancia: Destreza. Magia de ataque: modificador de Carisma."},
+      {"level": 1, "name": "Conjuracao", "type": "feature", "description": "Conjurador de magia arcana com Carisma. Prepara magias da lista de bardo; truques e espacos conforme tabela de conjurador."},
+      {"level": 1, "name": "Inspiracao bardica", "type": "feature", "description": "Gasta uso para dar um dado de Inspiracao (d6) a uma criatura a 18 m que pode somar em um teste de habilidade, ataque ou resistencia."},
+      {"level": 2, "name": "Versatilidade", "type": "feature", "description": "Soma metade do bonus de proficiencia em testes de habilidade em que nao e proficiente."},
+      {"level": 2, "name": "Cancao de descanso", "type": "feature", "description": "Durante descanso curto, aliados que ouvem recuperam PV extra igual ao dado de Inspiracao."},
+      {"level": 3, "name": "Colegio bardico", "type": "feature", "description": "Escolhe um colegio que define truques e habilidades adicionais."},
+      {"level": 3, "name": "Pericia", "type": "feature", "description": "Dobra o bonus de proficiencia em duas pericias escolhidas."},
+      {"level": 5, "name": "Inspiracao bardica (d8)", "type": "feature", "description": "O dado de Inspiracao bardica passa a ser d8."},
+      {"level": 5, "name": "Fonte de inspiracao", "type": "feature", "description": "Recupera todos os usos de Inspiracao bardica apos descanso curto ou longo."}
+    ]
+  },
+  "cleric": {
+    "attributeTips": {
+      "summary": "O clerigo conjura com Sabedoria e usa Carisma em testes de resistencia de classe. Constituicao aumenta a sobrevivencia.",
+      "primary": ["wisdom"],
+      "secondary": ["charisma", "constitution"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "cleric_weapon",
+        "prompt": "Arma corpo a corpo (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Maca", "items": ["Maca"]},
+          {"id": "b", "label": "Martelo de guerra", "items": ["Martelo de guerra"]}
+        ]
+      },
+      {
+        "id": "cleric_armor",
+        "prompt": "Armadura (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Brunea", "items": ["Brunea"]},
+          {"id": "b", "label": "Armadura de couro", "items": ["Armadura de couro"]},
+          {"id": "c", "label": "Cota de malha", "items": ["Cota de malha"]}
+        ]
+      },
+      {
+        "id": "cleric_ranged",
+        "prompt": "Arma a distancia ou simples (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Besta leve e 20 virotes", "items": ["Besta leve", "20 virotes"]},
+          {"id": "b", "label": "Qualquer arma simples", "items": ["Uma arma simples a escolha"]}
+        ]
+      },
+      {
+        "id": "cleric_pack",
+        "prompt": "Pacote (escolha um)",
+        "options": [
+          {"id": "a", "label": "Pacote do sacerdote", "items": ["Pacote do sacerdote"]},
+          {"id": "b", "label": "Pacote do explorador", "items": ["Pacote do explorador"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Escudo", "Simbolo sagrado"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque com arma: Forca (corpo a corpo) ou Destreza (a distancia). Truque ou magia de ataque: modificador de Sabedoria."},
+      {"level": 1, "name": "Conjuracao", "type": "feature", "description": "Conjurador de magia divina com Sabedoria. Prepara magias de clerigo diariamente; truques conhecidos e espacos de magia conforme nivel."},
+      {"level": 1, "name": "Dominio divino", "type": "feature", "description": "Escolhe um dominio que concede magias de dominio, proficiencias e habilidades nos niveis 1, 2, 6, 8 e 17."},
+      {"level": 2, "name": "Canalizar divindade", "type": "feature", "description": "Usa efeito do dominio ou opcao geral (repelir mortos-vivos, etc.). Usos por descanso curto ou longo conforme nivel."},
+      {"level": 5, "name": "Destruir mortos-vivos", "type": "feature", "description": "Quando um morto-vivo falha em resistencia contra Canalizar divindade, e destruido se CR for 1/2 ou menor."}
+    ]
+  },
+  "druid": {
+    "attributeTips": {
+      "summary": "O druida conjura com Sabedoria. Constituicao e Destreza ajudam na CA e na forma selvagem.",
+      "primary": ["wisdom"],
+      "secondary": ["constitution", "dexterity"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "druid_shield_weapon",
+        "prompt": "Escudo ou arma (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Escudo de madeira", "items": ["Escudo de madeira"]},
+          {"id": "b", "label": "Qualquer arma simples corpo a corpo", "items": ["Uma arma simples corpo a corpo a escolha"]}
+        ]
+      },
+      {
+        "id": "druid_melee",
+        "prompt": "Arma corpo a corpo (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Cimitarra", "items": ["Cimitarra"]},
+          {"id": "b", "label": "Qualquer arma simples corpo a corpo", "items": ["Uma arma simples corpo a corpo a escolha"]}
+        ]
+      },
+      {
+        "id": "druid_pack",
+        "prompt": "Pacote",
+        "options": [
+          {"id": "a", "label": "Pacote do explorador", "items": ["Pacote do explorador"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Armadura de couro", "Foco druidico"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque com arma: Forca ou Destreza conforme a arma. Magias de ataque usam modificador de Sabedoria."},
+      {"level": 1, "name": "Druidico", "type": "feature", "description": "Conhece idioma Druidico e pode deixar mensagens secretas visiveis a outros druidas."},
+      {"level": 1, "name": "Conjuracao", "type": "feature", "description": "Conjurador de magia divina com Sabedoria. Prepara magias de druida; truques e espacos conforme tabela."},
+      {"level": 2, "name": "Forma selvagem", "type": "feature", "description": "Usa acao para assumir forma de besta de CR limitado. Usos por descanso curto ou longo conforme nivel."},
+      {"level": 2, "name": "Circulo druidico", "type": "feature", "description": "Escolhe um circulo com habilidades nos niveis 2, 6, 10 e 14."},
+      {"level": 5, "name": "Forma selvagem (CR maior)", "type": "feature", "description": "Pode assumir bestas de CR ate 1 (nao voadoras) e recupera mais usos de Forma selvagem."}
+    ]
+  },
+  "fighter": {
+    "attributeTips": {
+      "summary": "O guerreiro usa Forca para armas corpo a corpo ou Destreza para armas a distancia e finesse. Constituicao aumenta os pontos de vida.",
+      "primary": ["strength", "dexterity"],
+      "secondary": ["constitution"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "fighter_armor",
+        "prompt": "Armadura (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Cota de malha", "items": ["Cota de malha"]},
+          {"id": "b", "label": "Armadura de couro, arco longo e 20 flechas", "items": ["Armadura de couro", "Arco longo", "20 flechas"]},
+          {"id": "c", "label": "Brunea e besta leve com 20 virotes", "items": ["Brunea", "Besta leve", "20 virotes"]}
+        ]
+      },
+      {
+        "id": "fighter_martial",
+        "prompt": "Armas marciais (escolha uma opcao)",
+        "options": [
+          {"id": "a", "label": "Uma arma marcial e escudo", "items": ["Uma arma marcial a escolha", "Escudo"]},
+          {"id": "b", "label": "Duas armas marciais", "items": ["Duas armas marciais a escolha"]}
+        ]
+      },
+      {
+        "id": "fighter_ranged",
+        "prompt": "Arma a distancia (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Besta leve e 20 virotes", "items": ["Besta leve", "20 virotes"]},
+          {"id": "b", "label": "Duas azagaias", "items": ["Azagaia", "Azagaia"]}
+        ]
+      },
+      {
+        "id": "fighter_pack",
+        "prompt": "Pacote (escolha um)",
+        "options": [
+          {"id": "a", "label": "Pacote do explorador", "items": ["Pacote do explorador"]},
+          {"id": "b", "label": "Pacote do atirador", "items": ["Pacote do atirador"]}
+        ]
+      }
+    ],
+    "fixedItems": [],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque com arma. Corpo a corpo: Forca (ou Destreza com finesse). A distancia: Destreza. Dano: dado da arma + modificador de ataque."},
+      {"level": 1, "name": "Estilo de combate", "type": "feature", "description": "Escolhe um estilo de combate (Arqueiro, Defesa, Duelo, Combate com duas armas, Grande arma, Protecao)."},
+      {"level": 1, "name": "Segundo folego", "type": "feature", "description": "Recupera 1d10 + nivel de guerreiro em PV como acao bonus. Uma vez por descanso curto ou longo."},
+      {"level": 2, "name": "Surto de acao", "type": "feature", "description": "Ganha uma acao adicional no turno. Usos aumentam com o nivel; recupera em descanso curto ou longo."},
+      {"level": 3, "name": "Arquetipo marcial", "type": "feature", "description": "Escolhe um arquetipo (Campeao, Mestre de batalha, etc.) com habilidades nos niveis 3, 7, 10, 15 e 18."},
+      {"level": 5, "name": "Ataque extra", "type": "feature", "description": "Pode atacar duas vezes quando usa a acao Atacar."}
+    ]
+  },
+  "monk": {
+    "attributeTips": {
+      "summary": "O monge usa Destreza para CA, ataques desarmados e armas de monge, e Sabedoria para CD de magias e Ki.",
+      "primary": ["dexterity", "wisdom"],
+      "secondary": []
+    },
+    "equipmentChoices": [
+      {
+        "id": "monk_weapon",
+        "prompt": "Arma corpo a corpo (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Espada curta", "items": ["Espada curta"]},
+          {"id": "b", "label": "Qualquer arma simples corpo a corpo", "items": ["Uma arma simples corpo a corpo a escolha"]}
+        ]
+      },
+      {
+        "id": "monk_pack",
+        "prompt": "Pacote (escolha um)",
+        "options": [
+          {"id": "a", "label": "Pacote do explorador", "items": ["Pacote do explorador"]},
+          {"id": "b", "label": "Pacote do aventureiro", "items": ["Pacote do aventureiro"]}
+        ]
+      }
+    ],
+    "fixedItems": ["10 dardos"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque desarmado ou com arma de monge: usa Destreza para ataque e dano. Dano desarmado: 1d4 + Destreza."},
+      {"level": 1, "name": "Defesa sem armadura", "type": "feature", "description": "CA = 10 + Destreza + Sabedoria sem armadura ou escudo."},
+      {"level": 1, "name": "Artes marciais", "type": "feature", "description": "Pode usar Destreza em ataques desarmados e com armas de monge; pode usar acao bonus para ataque desarmado apos atacar."},
+      {"level": 2, "name": "Ki", "type": "feature", "description": "Gasta pontos de Ki para Flurry of Blows, Patient Defense ou Step of the Wind. Pontos = nivel de monge."},
+      {"level": 2, "name": "Movimento sem armadura", "type": "feature", "description": "Velocidade aumenta em 3 m quando nao usa armadura ou escudo."},
+      {"level": 3, "name": "Tradicao monastica", "type": "feature", "description": "Escolhe uma tradicao com habilidades nos niveis 3, 6, 11 e 17."},
+      {"level": 4, "name": "Queda lenta", "type": "feature", "description": "Pode usar reacao para reduzir dano de queda em 5 x nivel de monge."},
+      {"level": 5, "name": "Ataque extra", "type": "feature", "description": "Pode atacar duas vezes quando usa a acao Atacar."},
+      {"level": 5, "name": "Golpe atordoante", "type": "feature", "description": "Quando acerta um ataque corpo a corpo, pode gastar 1 Ki para tentar atordoar o alvo (CD de resistencia de Constituicao = 8 + proficiencia + Sabedoria)."}
+    ]
+  },
+  "paladin": {
+    "attributeTips": {
+      "summary": "O paladino conjura e usa Carisma para magias e testes de classe. Forca alimenta ataques corpo a corpo e Constituicao ajuda na resistencia.",
+      "primary": ["charisma"],
+      "secondary": ["strength", "constitution"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "paladin_martial",
+        "prompt": "Arma marcial e escudo (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Espada longa e escudo", "items": ["Espada longa", "Escudo"]},
+          {"id": "b", "label": "Martelo de guerra e escudo", "items": ["Martelo de guerra", "Escudo"]},
+          {"id": "c", "label": "Outra arma marcial e escudo", "items": ["Uma arma marcial a escolha", "Escudo"]}
+        ]
+      },
+      {
+        "id": "paladin_pack",
+        "prompt": "Pacote (escolha um)",
+        "options": [
+          {"id": "a", "label": "Pacote do sacerdote", "items": ["Pacote do sacerdote"]},
+          {"id": "b", "label": "Pacote do explorador", "items": ["Pacote do explorador"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Cinco azagaias", "Cota de malha", "Simbolo sagrado"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque corpo a corpo com Forca (arma marcial ou simples). Magias de ataque usam Carisma."},
+      {"level": 1, "name": "Sentido divino", "type": "feature", "description": "Acao para detectar celestiais, infernais ou mortos-vivos a 18 m. Usos = 1 + Carisma por descanso longo."},
+      {"level": 1, "name": "Cura pelas maos", "type": "feature", "description": "Reserva de cura = 5 x nivel de paladino em PV, restaurada em descanso longo. Cura com toque gasta pontos da reserva."},
+      {"level": 2, "name": "Estilo de combate", "type": "feature", "description": "Escolhe um estilo de combate como o guerreiro."},
+      {"level": 2, "name": "Conjuracao", "type": "feature", "description": "Conjurador de magia divina com Carisma. Prepara magias de paladino; metade do nivel arredondado para cima em espacos."},
+      {"level": 2, "name": "Golpe divino", "type": "feature", "description": "Ao acertar ataque corpo a corpo, gasta espaco de magia para causar dano radiante extra (2d8 para 1o espaco, +1d8 por espaco acima do 1o)."},
+      {"level": 3, "name": "Juramento sagrado", "type": "feature", "description": "Escolhe juramento (Devocao, Ancioes, Vinganca, etc.) com magias e habilidades nos niveis 3, 7, 15 e 20."},
+      {"level": 5, "name": "Ataque extra", "type": "feature", "description": "Pode atacar duas vezes quando usa a acao Atacar."}
+    ]
+  },
+  "ranger": {
+    "attributeTips": {
+      "summary": "O patrulheiro conjura com Sabedoria e combate com Destreza (arco) ou Forca. Constituicao melhora a sobrevivencia.",
+      "primary": ["wisdom"],
+      "secondary": ["dexterity", "constitution"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "ranger_armor",
+        "prompt": "Armadura (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Brunea", "items": ["Brunea"]},
+          {"id": "b", "label": "Armadura de couro batido", "items": ["Armadura de couro batido"]}
+        ]
+      },
+      {
+        "id": "ranger_weapons",
+        "prompt": "Armas corpo a corpo (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Duas espadas curtas", "items": ["Espada curta", "Espada curta"]},
+          {"id": "b", "label": "Duas armas simples corpo a corpo", "items": ["Duas armas simples corpo a corpo a escolha"]}
+        ]
+      },
+      {
+        "id": "ranger_pack",
+        "prompt": "Pacote",
+        "options": [
+          {"id": "a", "label": "Pacote do explorador", "items": ["Pacote do explorador"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Arco longo", "Aljava com 20 flechas"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque com arma: Forca (corpo a corpo) ou Destreza (a distancia e finesse). Magias de ataque: Sabedoria."},
+      {"level": 1, "name": "Inimigo favorecido", "type": "feature", "description": "Vantagem em testes de Sobrevivencia para rastrear e em Inteligencia para lembrar informacoes sobre um tipo de criatura escolhido."},
+      {"level": 1, "name": "Explorador natural", "type": "feature", "description": "Escolhe um tipo de terreno favorito com beneficios de viagem e navegacao."},
+      {"level": 2, "name": "Estilo de combate", "type": "feature", "description": "Escolhe um estilo de combate (inclui Arqueiro e Combate com duas armas)."},
+      {"level": 2, "name": "Conjuracao", "type": "feature", "description": "Conjurador de magia divina com Sabedoria. Conhece magias de patrulheiro; espacos conforme metade do nivel arredondado para cima."},
+      {"level": 3, "name": "Arquetipo de patrulheiro", "type": "feature", "description": "Escolhe arquetipo (Cacador, Mestre das bestas, etc.) com habilidades nos niveis 3, 7, 11 e 15."},
+      {"level": 5, "name": "Ataque extra", "type": "feature", "description": "Pode atacar duas vezes quando usa a acao Atacar."}
+    ]
+  },
+  "rogue": {
+    "attributeTips": {
+      "summary": "O ladino depende de Destreza para ataques, CA com armadura leve e Furtividade. Inteligencia ou Carisma ajudam em pericias.",
+      "primary": ["dexterity"],
+      "secondary": ["intelligence", "charisma"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "rogue_primary",
+        "prompt": "Arma corpo a corpo (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Rapieira", "items": ["Rapieira"]},
+          {"id": "b", "label": "Espada curta", "items": ["Espada curta"]}
+        ]
+      },
+      {
+        "id": "rogue_ranged",
+        "prompt": "Arma secundaria (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Arco curto e aljava com 20 flechas", "items": ["Arco curto", "Aljava com 20 flechas"]},
+          {"id": "b", "label": "Espada curta", "items": ["Espada curta"]}
+        ]
+      },
+      {
+        "id": "rogue_pack",
+        "prompt": "Pacote (escolha um)",
+        "options": [
+          {"id": "a", "label": "Pacote de ladrao", "items": ["Pacote de ladrao"]},
+          {"id": "b", "label": "Pacote do explorador", "items": ["Pacote do explorador"]},
+          {"id": "c", "label": "Pacote do atirador", "items": ["Pacote do atirador"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Armadura de couro", "Adaga", "Adaga", "Ferramentas de ladrao"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque com arma finesse ou a distancia: Destreza para ataque e dano. Ataque furtivo adiciona dados extras com Destreza nas condicoes certas."},
+      {"level": 1, "name": "Pericia", "type": "feature", "description": "Dobra bonus de proficiencia em duas pericias com proficiencia (exceto testes de ataque)."},
+      {"level": 1, "name": "Ataque furtivo", "type": "feature", "description": "Uma vez por turno, adiciona 1d6 de dano se acertar com vantagem ou aliado adjacente ao alvo, usando arma finesse ou a distancia."},
+      {"level": 1, "name": "Giria de ladino", "type": "feature", "description": "Conhece dialeto secreto para passar mensagens discretas a outros ladinos."},
+      {"level": 2, "name": "Acao astuta", "type": "feature", "description": "Pode Disparar, Esquivar ou Esconder-se como acao bonus a cada turno."},
+      {"level": 3, "name": "Arquetipo ladino", "type": "feature", "description": "Escolhe arquetipo (Assassino, Mestre das mascaras, etc.) com habilidades nos niveis 3, 9, 13 e 17."},
+      {"level": 5, "name": "Esquiva sobrenatural", "type": "feature", "description": "Quando um atacante que voce ve acerta, pode usar reacao para reduzir o dano pela metade."}
+    ]
+  },
+  "sorcerer": {
+    "attributeTips": {
+      "summary": "O feiticeiro conjura com Carisma. Constituicao melhora PV e concentracao; Destreza ajuda na CA.",
+      "primary": ["charisma"],
+      "secondary": ["constitution", "dexterity"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "sorcerer_weapon",
+        "prompt": "Arma (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Besta leve e 20 virotes", "items": ["Besta leve", "20 virotes"]},
+          {"id": "b", "label": "Qualquer arma simples", "items": ["Uma arma simples a escolha"]}
+        ]
+      },
+      {
+        "id": "sorcerer_focus",
+        "prompt": "Foco de conjuracao (escolha um)",
+        "options": [
+          {"id": "a", "label": "Bolsa de componentes", "items": ["Bolsa de componentes"]},
+          {"id": "b", "label": "Foco arcano", "items": ["Foco arcano"]}
+        ]
+      },
+      {
+        "id": "sorcerer_pack",
+        "prompt": "Pacote (escolha um)",
+        "options": [
+          {"id": "a", "label": "Pacote do aventureiro", "items": ["Pacote do aventureiro"]},
+          {"id": "b", "label": "Pacote do explorador", "items": ["Pacote do explorador"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Duas adagas"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque com arma simples: Destreza (a distancia) ou Forca. Truques e magias de ataque usam Carisma."},
+      {"level": 1, "name": "Conjuracao", "type": "feature", "description": "Conjurador de magia arcana com Carisma. Magias conhecidas limitadas; truques e espacos conforme tabela de feiticeiro."},
+      {"level": 1, "name": "Origem sobrenatural", "type": "feature", "description": "Escolhe origem (Linhagem draconica, Magia selvagem, etc.) com truques, magias e habilidades nos niveis 1, 6, 14 e 18."},
+      {"level": 2, "name": "Fonte de magia", "type": "feature", "description": "Pontos de feiticaria para criar espacos de magia ou alterar magias (Metamagia). Pontos = nivel de feiticeiro."},
+      {"level": 3, "name": "Metamagia", "type": "feature", "description": "Escolhe duas opcoes de Metamagia (Emagrecer, Estender, etc.) gastando pontos de feiticaria."},
+      {"level": 5, "name": "Progressao de conjurador", "type": "feature", "description": "Conhece seis magias no total, possui espacos de magia ate 3o nivel e 5 pontos de feiticaria conforme tabela de feiticeiro."}
+    ]
+  },
+  "warlock": {
+    "attributeTips": {
+      "summary": "O bruxo usa Carisma para magias de pacto e invocacoes. Constituicao e Destreza aumentam resistencia e CA com armadura leve.",
+      "primary": ["charisma"],
+      "secondary": ["constitution", "dexterity"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "warlock_weapon",
+        "prompt": "Arma (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Besta leve e 20 virotes", "items": ["Besta leve", "20 virotes"]},
+          {"id": "b", "label": "Qualquer arma simples", "items": ["Uma arma simples a escolha"]}
+        ]
+      },
+      {
+        "id": "warlock_focus",
+        "prompt": "Foco de conjuracao (escolha um)",
+        "options": [
+          {"id": "a", "label": "Bolsa de componentes", "items": ["Bolsa de componentes"]},
+          {"id": "b", "label": "Foco arcano", "items": ["Foco arcano"]}
+        ]
+      },
+      {
+        "id": "warlock_pack",
+        "prompt": "Pacote (escolha um)",
+        "options": [
+          {"id": "a", "label": "Pacote de estudioso", "items": ["Pacote de estudioso"]},
+          {"id": "b", "label": "Pacote de diplomata", "items": ["Pacote de diplomata"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Armadura de couro", "Adaga", "Adaga", "Adaga"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque com arma: Destreza ou Forca conforme a arma. Raio agourento e magias de ataque usam Carisma."},
+      {"level": 1, "name": "Patrono transcendental", "type": "feature", "description": "Escolhe patrono (Arquifada, Corruptor, Grande Antigo) com magias de patrono e habilidades nos niveis 1, 6, 10 e 14."},
+      {"level": 1, "name": "Magia de pacto", "type": "feature", "description": "Conjurador com espacos sempre do nivel mais alto disponivel; recupera espacos em descanso curto. Carisma como atributo."},
+      {"level": 2, "name": "Invocacoes misticas", "type": "feature", "description": "Escolhe invocacoes (Agonia, Armadura das sombras, etc.) conforme pre-requisitos."},
+      {"level": 3, "name": "Dadiva do pacto", "type": "feature", "description": "Escolhe Pacto da Cadeia, da Lamina ou do Tome com beneficios adicionais."},
+      {"level": 5, "name": "Raio agourento (3 raios)", "type": "feature", "description": "Raio agourento pode dividir o dano entre ate tres alvos a 3 m um do outro."}
+    ]
+  },
+  "wizard": {
+    "attributeTips": {
+      "summary": "O mago conjura com Inteligencia. Constituicao protege concentracao; Destreza ajuda na CA com armadura leve se usar.",
+      "primary": ["intelligence"],
+      "secondary": ["constitution", "dexterity"]
+    },
+    "equipmentChoices": [
+      {
+        "id": "wizard_weapon",
+        "prompt": "Arma (escolha uma)",
+        "options": [
+          {"id": "a", "label": "Bordao", "items": ["Bordao"]},
+          {"id": "b", "label": "Adaga", "items": ["Adaga"]}
+        ]
+      },
+      {
+        "id": "wizard_focus",
+        "prompt": "Foco de conjuracao (escolha um)",
+        "options": [
+          {"id": "a", "label": "Bolsa de componentes", "items": ["Bolsa de componentes"]},
+          {"id": "b", "label": "Foco arcano", "items": ["Foco arcano"]}
+        ]
+      },
+      {
+        "id": "wizard_pack",
+        "prompt": "Pacote",
+        "options": [
+          {"id": "a", "label": "Pacote de estudioso", "items": ["Pacote de estudioso"]}
+        ]
+      }
+    ],
+    "fixedItems": ["Grimorio"],
+    "abilities": [
+      {"level": 1, "name": "Ataque basico", "type": "attack", "description": "Ataque com adaga ou bordao: Forca ou Destreza. Truques e magias de ataque usam Inteligencia."},
+      {"level": 1, "name": "Conjuracao", "type": "feature", "description": "Conjurador arcana com Inteligencia. Magias no grimorio; prepara lista diaria; truques e espacos conforme tabela de mago."},
+      {"level": 1, "name": "Recuperacao arcana", "type": "feature", "description": "Uma vez por dia, em descanso curto recupera espacos de magia totalizando ate metade do nivel de mago (arredondado para cima)."},
+      {"level": 2, "name": "Tradicao arcana", "type": "feature", "description": "Escolhe escola (Abjuracao, Evocacao, etc.) com habilidades nos niveis 2, 6, 10 e 14."},
+      {"level": 5, "name": "Memorizar magia", "type": "feature", "description": "Pode preparar duas magias de 1o ou 2o nivel adicionais apos descanso longo, alem da preparacao normal."}
+    ]
+  }
+}

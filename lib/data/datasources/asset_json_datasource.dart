@@ -12,4 +12,9 @@ class AssetJsonDatasource {
     final decoded = jsonDecode(raw) as List<dynamic>;
     return decoded.cast<Map<String, dynamic>>();
   }
+
+  Future<Map<String, dynamic>> loadMap(String path) async {
+    final raw = await _bundle.loadString(path);
+    return jsonDecode(raw) as Map<String, dynamic>;
+  }
 }

@@ -114,5 +114,4 @@ const _catalog = GameCatalog(
       skillProficiencies: ['arcana', 'history'],
     ),
   ],
-  proficiencies: [],
 );

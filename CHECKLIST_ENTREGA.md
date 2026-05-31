@@ -3,32 +3,29 @@
 ## Ambiente
 
 - [ ] Flutter no PATH (`flutter doctor`)
-- [ ] Android SDK (opcional, para APK)
+- [ ] Android SDK + dispositivo/emulador (APK)
 - [ ] Visual Studio C++ (Windows desktop)
+
+## Plataformas
+
+- [ ] Windows: `flutter run -d windows`
+- [ ] Android: `flutter run -d android`
 
 ## Funcional
 
-- [ ] Criar personagem com raca/classe/antecedente
-- [ ] Atributos atualizam calculos em tempo real
-- [ ] Salvar ficha localmente
-- [ ] Abrir ficha salva
+- [ ] Criar/editar ficha
+- [ ] Salvar e abrir ficha
 - [ ] Exportar PDF
-- [ ] Autosave apos editar (aguardar 2s)
+- [ ] Autosave (2s)
 
 ## Qualidade
 
-- [ ] `flutter analyze` sem erros
-- [ ] `flutter test` passando
-- [ ] Build Windows gerado
+- [ ] `flutter analyze`
+- [ ] `flutter test`
+- [ ] `flutter build windows`
+- [ ] `flutter build apk`
 
 ## Documentacao
 
-- [ ] README.md atualizado
+- [ ] README.md
 - [ ] IMPLEMENTACAO_FINAL.md
-- [ ] PDF de codigo (se exigido pela disciplina)
-
-## Pendencias academicas (se aplicavel)
-
-- [ ] Video demonstracao
-- [ ] Relatorio STRIDE
-- [ ] Repositorio GitHub publicado/privado

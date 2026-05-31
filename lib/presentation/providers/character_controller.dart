@@ -5,9 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/entities/attribute_set.dart';
 import '../../domain/entities/character.dart';
 import '../../domain/entities/character_sheet_details.dart';
+import '../../domain/entities/class_build_data.dart';
 import '../../domain/entities/game_catalog.dart';
+import '../../domain/rules/class_build_rule.dart';
 import '../../domain/rules/sheet_proficiency_rule.dart';
-import '../../domain/rules/starting_equipment_rule.dart';
 import '../../domain/usecases/save_character_usecase.dart';
 import 'catalog_providers.dart';
 import 'persistence_providers.dart';
@@ -24,7 +25,14 @@ class CharacterController extends Notifier<Character> {
     ref.listen(gameCatalogProvider, (previous, next) {
       next.whenData((_) {
         if (state.id == null && state.sheet.equipment.isEmpty) {
-          state = _applyClassOrBackgroundChange();
+          state = _applyClassOrBackgroundChange(resetSelections: true);
+        }
+      });
+    });
+    ref.listen(classBuildCatalogProvider, (previous, next) {
+      next.whenData((_) {
+        if (state.id == null && state.sheet.equipment.isEmpty) {
+          state = _applyClassOrBackgroundChange(resetSelections: true);
         }
       });
     });
@@ -69,12 +77,15 @@ class CharacterController extends Notifier<Character> {
   }
 
   void selectClass(String classId) {
-    state = _applyClassOrBackgroundChange(classId: classId);
+    state = _applyClassOrBackgroundChange(classId: classId, resetSelections: true);
     _scheduleAutosave();
   }
 
   void selectBackground(String backgroundId) {
-    state = _applyClassOrBackgroundChange(backgroundId: backgroundId);
+    state = _applyClassOrBackgroundChange(
+      backgroundId: backgroundId,
+      resetSelections: true,
+    );
     _scheduleAutosave();
   }
 
@@ -87,9 +98,19 @@ class CharacterController extends Notifier<Character> {
     );
   }
 
+  ClassBuildCatalog? _buildCatalogOrNull() {
+    final async = ref.read(classBuildCatalogProvider);
+    return async.when(
+      data: (catalog) => catalog,
+      loading: () => null,
+      error: (_, _) => null,
+    );
+  }
+
   Character _applyClassOrBackgroundChange({
     String? classId,
     String? backgroundId,
+    bool resetSelections = false,
   }) {
     var next = state.copyWith(
       classId: classId,
@@ -102,18 +123,95 @@ class CharacterController extends Notifier<Character> {
 
     final characterClass = catalog.classById(next.classId);
     final background = catalog.backgroundById(next.backgroundId);
-    final equipment = buildStartingEquipmentText(
+    final buildData = _buildCatalogOrNull()?.forClass(next.classId);
+
+    var choices = next.sheet.equipmentChoiceSelections;
+    if (resetSelections || choices.isEmpty) {
+      choices = defaultEquipmentChoices(buildData);
+    }
+
+    var bgItems = next.sheet.selectedBackgroundItems;
+    if (resetSelections || bgItems.isEmpty) {
+      bgItems = List<String>.from(background.startingEquipment);
+    }
+
+    final equipment = resolveStartingEquipmentText(
       characterClass: characterClass,
       background: background,
+      buildData: buildData,
+      choiceSelections: choices,
+      selectedBackgroundItems: bgItems,
     );
     final hd = defaultHitDiceLabel(characterClass.hitDice, next.level);
 
     return next.copyWith(
       sheet: next.sheet.copyWith(
         equipment: equipment,
+        equipmentChoiceSelections: choices,
+        selectedBackgroundItems: bgItems,
         hitDiceTotal: hd,
         hitDiceRemaining: hd,
         currentHitPoints: () => null,
+      ),
+    );
+  }
+
+  void selectEquipmentChoice(String groupId, String optionId) {
+    final catalog = _catalogOrNull();
+    if (catalog == null) {
+      return;
+    }
+    final buildData = _buildCatalogOrNull()?.forClass(state.classId);
+    final choices = Map<String, String>.from(state.sheet.equipmentChoiceSelections);
+    choices[groupId] = optionId;
+
+    final equipment = resolveStartingEquipmentText(
+      characterClass: catalog.classById(state.classId),
+      background: catalog.backgroundById(state.backgroundId),
+      buildData: buildData,
+      choiceSelections: choices,
+      selectedBackgroundItems: state.sheet.selectedBackgroundItems,
+    );
+
+    _patchSheet(
+      (s) => s.copyWith(
+        equipmentChoiceSelections: choices,
+        equipment: equipment,
+      ),
+    );
+  }
+
+  void toggleBackgroundItem(String item, bool included) {
+    final catalog = _catalogOrNull();
+    if (catalog == null) {
+      return;
+    }
+    final background = catalog.backgroundById(state.backgroundId);
+    var items = List<String>.from(state.sheet.selectedBackgroundItems);
+    if (items.isEmpty) {
+      items = List<String>.from(background.startingEquipment);
+    }
+    if (included) {
+      if (!items.contains(item)) {
+        items.add(item);
+      }
+    } else {
+      items.remove(item);
+    }
+
+    final buildData = _buildCatalogOrNull()?.forClass(state.classId);
+    final equipment = resolveStartingEquipmentText(
+      characterClass: catalog.classById(state.classId),
+      background: background,
+      buildData: buildData,
+      choiceSelections: state.sheet.equipmentChoiceSelections,
+      selectedBackgroundItems: items,
+    );
+
+    _patchSheet(
+      (s) => s.copyWith(
+        selectedBackgroundItems: items,
+        equipment: equipment,
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'background.dart';
 import 'character_class.dart';
-import 'proficiency.dart';
 import 'race.dart';
 
 class GameCatalog {
@@ -8,13 +7,11 @@ class GameCatalog {
     required this.races,
     required this.classes,
     required this.backgrounds,
-    required this.proficiencies,
   });
 
   final List<Race> races;
   final List<CharacterClass> classes;
   final List<Background> backgrounds;
-  final List<Proficiency> proficiencies;
 
   Race raceById(String id) {
     return races.firstWhere((race) => race.id == id);

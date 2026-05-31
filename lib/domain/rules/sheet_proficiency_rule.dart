@@ -1,4 +1,3 @@
-import '../../core/constants/attribute_keys.dart';
 import '../entities/character_sheet_details.dart';
 
 bool isSkillProficient({
@@ -71,24 +70,4 @@ int savingThrowBonus({
   return mod + (proficient ? proficiencyBonus : 0);
 }
 
-List<String> displayProficiencies(List<String> auto, CharacterSheetDetails sheet) {
-  final manual = sheet.extraProficiencies.trim();
-  if (manual.isEmpty) {
-    return auto;
-  }
-  return [...auto, manual];
-}
-
-List<String> displayLanguages(List<String> auto, CharacterSheetDetails sheet) {
-  final extra = sheet.extraLanguages.trim();
-  if (extra.isEmpty) {
-    return auto;
-  }
-  return [...auto, ...extra.split(',').map((s) => s.trim()).where((s) => s.isNotEmpty)];
-}
-
 String defaultHitDiceLabel(int hitDice, int level) => '${level}d$hitDice';
-
-void assertAttributeKeys() {
-  assert(attributeKeys.length == 6);
-}

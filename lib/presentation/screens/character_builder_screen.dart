@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/theme/sheet_theme.dart';
 import '../providers/catalog_providers.dart';
+import '../widgets/build/class_build_panel.dart';
 import '../widgets/character_actions_bar.dart';
 import '../widgets/sheet/official_character_sheet.dart';
 
@@ -41,6 +42,8 @@ class _CharacterBuilderContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const CharacterActionsBar(),
+          const SizedBox(height: 12),
+          const ClassBuildPanel(),
           const SizedBox(height: 12),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,

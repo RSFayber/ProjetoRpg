@@ -2,15 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:printing/printing.dart';
 
-import '../../domain/entities/character.dart';
+import '../../core/errors/app_exception.dart';
 import '../../data/services/character_pdf_service.dart';
+import '../../domain/entities/character.dart';
+import '../../domain/usecases/export_character_file_usecase.dart';
+import '../../domain/usecases/import_character_file_usecase.dart';
 import '../providers/catalog_providers.dart';
 import '../providers/character_controller.dart';
 import '../providers/character_stats_provider.dart';
 import '../providers/persistence_providers.dart';
+import '../services/character_file_picker_service.dart';
 
 class CharacterActionsBar extends ConsumerWidget {
   const CharacterActionsBar({super.key});
+
+  static const _filePicker = CharacterFilePickerService();
+  static const _exportFile = ExportCharacterFileUseCase();
+  static const _importFile = ImportCharacterFileUseCase();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,6 +35,16 @@ class CharacterActionsBar extends ConsumerWidget {
               onPressed: () => _save(context, ref, controller),
               icon: const Icon(Icons.save),
               label: const Text('Salvar ficha'),
+            ),
+            OutlinedButton.icon(
+              onPressed: () => _exportFileAction(context, ref),
+              icon: const Icon(Icons.upload_file),
+              label: const Text('Exportar arquivo'),
+            ),
+            OutlinedButton.icon(
+              onPressed: () => _importFileAction(context, ref, controller),
+              icon: const Icon(Icons.download),
+              label: const Text('Importar arquivo'),
             ),
             OutlinedButton.icon(
               onPressed: () => _exportPdf(context, ref),
@@ -60,16 +78,89 @@ class CharacterActionsBar extends ConsumerWidget {
       if (!context.mounted) {
         return;
       }
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Ficha salva (${saved.id}).')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Ficha salva (${saved.id}).')),
+      );
     } catch (error) {
       if (!context.mounted) {
         return;
       }
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Erro ao salvar: $error')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erro ao salvar: $error')),
+      );
+    }
+  }
+
+  Future<void> _exportFileAction(BuildContext context, WidgetRef ref) async {
+    try {
+      final character = ref.read(characterControllerProvider);
+      final bytes = _exportFile.call(character);
+      final fileName = _exportFile.suggestedFileName(character);
+
+      final path = await _filePicker.saveExportFile(
+        fileName: fileName,
+        bytes: bytes,
+      );
+
+      if (!context.mounted) {
+        return;
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Arquivo exportado: $path')),
+      );
+    } on AppException catch (error) {
+      if (!context.mounted || error.message == 'Exportacao cancelada.') {
+        return;
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erro ao exportar arquivo: ${error.message}')),
+      );
+    } catch (error) {
+      if (!context.mounted) {
+        return;
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erro ao exportar arquivo: $error')),
+      );
+    }
+  }
+
+  Future<void> _importFileAction(
+    BuildContext context,
+    WidgetRef ref,
+    CharacterController controller,
+  ) async {
+    try {
+      final bytes = await _filePicker.pickImportFile();
+      if (bytes == null) {
+        return;
+      }
+
+      final imported = _importFile.call(bytes);
+      controller.loadCharacter(imported);
+      final saved = await controller.saveCurrent();
+      ref.invalidate(savedCharactersProvider);
+
+      if (!context.mounted) {
+        return;
+      }
+
+      final label = saved.name.isEmpty ? 'Sem nome' : saved.name;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Ficha "$label" importada e salva neste dispositivo.',
+          ),
+        ),
+      );
+    } catch (error) {
+      if (!context.mounted) {
+        return;
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erro ao importar arquivo: $error')),
+      );
     }
   }
 
@@ -93,9 +184,9 @@ class CharacterActionsBar extends ConsumerWidget {
       if (!context.mounted) {
         return;
       }
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Erro ao exportar PDF: $error')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erro ao exportar PDF: $error')),
+      );
     }
   }
 

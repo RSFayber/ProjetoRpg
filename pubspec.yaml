@@ -1,5 +1,5 @@
 name: rpg_sheet_builder
-description: "Construtor de ficha D&D 5e com motor de regras, persistencia local e exportacao PDF."
+description: "Construtor de ficha D&D 5e — Windows (desktop) e Android (mobile)."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -41,6 +41,7 @@ dependencies:
   path: ^1.9.1
   pdf: ^3.12.0
   printing: ^5.14.3
+  file_picker: ^8.1.7
 
 dev_dependencies:
   flutter_test:

@@ -66,7 +66,6 @@ void main() {
           skillProficiencies: [],
         ),
       ],
-      proficiencies: [],
     );
 
     final bytes = await const CharacterPdfService().buildSheetPdf(
